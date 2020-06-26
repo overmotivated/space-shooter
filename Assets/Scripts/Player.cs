@@ -21,6 +21,15 @@ public class Player : MonoBehaviour
         CalculateMovement();
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("TripleShot"))
+        {
+            transform.GetComponent<Fire>().TripleShotAlowed();
+            Destroy(other.gameObject);
+        }
+    }
+
     void CalculateMovement()
     {
         float horizInput = Input.GetAxis("Horizontal");

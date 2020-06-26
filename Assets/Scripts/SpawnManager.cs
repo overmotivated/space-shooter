@@ -9,7 +9,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject enemyContainer;
     [SerializeField]
+    private GameObject bufsContainer;
+    [SerializeField]
     private GameObject enemyPrefab;
+    [SerializeField]
+    private GameObject tripleShotPrefab;
     private bool continueSpawn = true;
 
     private void Start()
@@ -25,15 +29,24 @@ public class SpawnManager : MonoBehaviour
     {
         while (continueSpawn)
         {
-            Spawn();
+            Spawn(enemyPrefab);
+            Spawn(tripleShotPrefab);
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    void Spawn()
+    void Spawn(GameObject prefab)
     {
-        GameObject newEnemy = Instantiate(enemyPrefab, new Vector3(Random.Range(-9f, 9f), 10, 0), Quaternion.identity);
-        newEnemy.transform.parent = enemyContainer.transform;
+        GameObject newPrefab = Instantiate(prefab, new Vector3(Random.Range(-9f, 9f), 10, 0), Quaternion.identity);
+        
+        if (prefab.transform.CompareTag("Enemy"))
+        {
+            newPrefab.transform.parent = enemyContainer.transform;
+        }
+        else
+        {
+            newPrefab.transform.parent = bufsContainer.transform;
+        }
     }
 
     public void OnPlayerDeath()
