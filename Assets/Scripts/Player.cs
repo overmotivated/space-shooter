@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private int lifeCount = 2;
+    [SerializeField]
     private SpawnManager spawnManager;
 
     void Start()
@@ -19,15 +20,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         CalculateMovement();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("TripleShot"))
-        {
-            transform.GetComponent<Fire>().TripleShotAlowed();
-            Destroy(other.gameObject);
-        }
     }
 
     void CalculateMovement()

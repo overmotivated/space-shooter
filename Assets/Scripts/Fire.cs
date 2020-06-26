@@ -28,16 +28,23 @@ public class Fire : MonoBehaviour
         if (tripleShotAlowed)
         {
             Instantiate(tripleLaserPrefab, spawnPos, Quaternion.identity);
-            tripleShotAlowed = false;
+            //tripleShotAlowed = false;
         }
         else
         {
             Instantiate(laserPrefab, spawnPos + new Vector3(0, 0.9f, 0), Quaternion.identity);
         }
     }
-    
-    public void TripleShotAlowed()
+  
+
+    public void TrippleShotBufActivate(float tripleShotDuration)
     {
-        tripleShotAlowed = true;
+        StartCoroutine(TripleShotBuf());
+        IEnumerator TripleShotBuf()
+        {
+            tripleShotAlowed = true;
+            yield return new WaitForSeconds(tripleShotDuration);
+            tripleShotAlowed = false;
+        }
     }
 }

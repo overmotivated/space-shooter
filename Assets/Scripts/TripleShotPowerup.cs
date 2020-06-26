@@ -6,7 +6,14 @@ public class TripleShotPowerup : MonoBehaviour
 {
     [SerializeField]
     private float speed = 3f;
+    private GameObject Player;
+    [SerializeField]
+    private float tripleShotDuration = 2.0f;
 
+    private void Start()
+    {
+        Player = GameObject.Find("Player");
+    }
     void Update()
     {
         Move();
@@ -18,6 +25,15 @@ public class TripleShotPowerup : MonoBehaviour
 
         if (transform.position.y < -5f)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<Fire>().TrippleShotBufActivate(tripleShotDuration);
             Destroy(gameObject);
         }
     }

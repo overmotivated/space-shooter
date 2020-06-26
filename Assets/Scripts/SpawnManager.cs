@@ -5,7 +5,9 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private float spawnInterval = 5f;
+    private float enemySpawnInterval = 5f;
+    [SerializeField]
+    private float powerUpSpawnInterval = 5f;
     [SerializeField]
     private GameObject enemyContainer;
     [SerializeField]
@@ -18,20 +20,29 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DoSpawn());
+        StartCoroutine(DoSpawnEnemy());
+        StartCoroutine(DoSpawnPowerUp());
     }
     void Update()
     {
         
     }
 
-    IEnumerator DoSpawn()
+    IEnumerator DoSpawnEnemy()
     {
         while (continueSpawn)
         {
             Spawn(enemyPrefab);
+            yield return new WaitForSeconds(enemySpawnInterval);
+        }
+    }
+
+    IEnumerator DoSpawnPowerUp()
+    {
+        while (continueSpawn)
+        {
             Spawn(tripleShotPrefab);
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(powerUpSpawnInterval);
         }
     }
 
