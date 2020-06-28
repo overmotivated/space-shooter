@@ -10,7 +10,7 @@ public class Fire : MonoBehaviour
     private GameObject tripleLaserPrefab;
     float shootAlowedTime = -1f;
     [SerializeField]
-    float shootCd = 0.3f;
+    float shootCd = 0.2f;
     private bool tripleShotAlowed = false;
 
     void Update()
@@ -37,13 +37,13 @@ public class Fire : MonoBehaviour
     }
   
 
-    public void TrippleShotBufActivate(float tripleShotDuration)
+    public void TrippleShotBufActivate(Vector2 tripleShotDuration)
     {
         StartCoroutine(TripleShotBuf());
         IEnumerator TripleShotBuf()
         {
             tripleShotAlowed = true;
-            yield return new WaitForSeconds(tripleShotDuration);
+            yield return new WaitForSeconds(Random.Range(tripleShotDuration.x, tripleShotDuration.y));
             tripleShotAlowed = false;
         }
     }

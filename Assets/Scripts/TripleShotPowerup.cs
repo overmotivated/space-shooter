@@ -8,7 +8,7 @@ public class TripleShotPowerup : MonoBehaviour
     private float speed = 3f;
     private GameObject Player;
     [SerializeField]
-    private float tripleShotDuration = 2.0f;
+    private Vector2 tripleShotDuration;
 
     private void Start()
     {
