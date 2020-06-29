@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private float enemySpawnInterval = 5f;
     [SerializeField]
-    private float powerupSpawnInterval = 5f;
+    private float powerupSpawnInterval = 3f;
     [SerializeField]
     private GameObject enemyContainer;
     [SerializeField]
@@ -15,11 +15,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
-    private GameObject tripleShotPowerupPrefab;
-    [SerializeField]
-    private GameObject speedPowerupPrefab;
-    [SerializeField]
-    private GameObject shieldPowerupPrefab;
+    private List<GameObject> powerupPrefabs;
     private bool continueSpawn = true;
 
     private void Start()
@@ -45,7 +41,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (continueSpawn)
         {
-            Spawn(tripleShotPowerupPrefab);
+            Spawn(powerupPrefabs.GetRandomItem<GameObject>());
             yield return new WaitForSeconds(powerupSpawnInterval);
         }
     }
