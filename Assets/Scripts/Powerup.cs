@@ -35,6 +35,7 @@ public class Powerup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PowerupManager.UsePowerup(powerupEnum);
+            Destroy(gameObject);
         }
     }
 }
