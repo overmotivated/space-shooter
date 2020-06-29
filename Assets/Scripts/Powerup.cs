@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TripleShotPowerup : MonoBehaviour
+public class Powerup : MonoBehaviour
 {
     [SerializeField]
     private float speed = 3f;
-    private GameObject Player;
+    private PowerupManager PowerupManager;
     [SerializeField]
-    private Vector2 tripleShotDuration;
+    private PowerupEnum powerupEnum;
 
     private void Start()
     {
-        Player = GameObject.Find("Player");
+        PowerupManager = GameObject.Find("PowerupManager").GetComponent<PowerupManager>();
     }
+
     void Update()
     {
         Move();
@@ -33,8 +34,7 @@ public class TripleShotPowerup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Fire>().TrippleShotBufActivate(tripleShotDuration);
-            Destroy(gameObject);
+            PowerupManager.UsePowerup(powerupEnum);
         }
     }
 }

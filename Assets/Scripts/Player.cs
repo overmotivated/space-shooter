@@ -48,6 +48,16 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
     public void Damage()
     {
         lifeCount--;
