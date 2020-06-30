@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
-    private int lifeCount = 2;
+    private int lifeCount = 3;
     [SerializeField]
     private SpawnManager spawnManager;
 
