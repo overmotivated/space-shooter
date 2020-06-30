@@ -44,20 +44,12 @@ public class PowerupManager : MonoBehaviour
             }
             else if (powerup == PowerupEnum.shield && !playerComponent.sheildActivated)
             {
-                GameObject shield;
-                if (playerComponent.sheildActivated)
-                {
-                    shield = player.transform.GetChild(0).gameObject;
-                }
-                else
-                {
-                    playerComponent.sheildActivated = true;
-                    shield = Instantiate(shieldPrefab, player.transform.position, Quaternion.identity);
-                    shield.transform.parent = player.transform;
-                }
+                var shield = player.transform.GetChild(0).gameObject;
+                playerComponent.sheildActivated = true;
+                shield.SetActive(true);
                 yield return new WaitForSeconds(powerupDuration * 5);
                 playerComponent.sheildActivated = false;
-                Destroy(shield);
+                shield.SetActive(false);
             }
         }
     }
