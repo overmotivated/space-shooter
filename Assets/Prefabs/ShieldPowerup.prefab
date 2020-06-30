@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1643115445376760957}
   - component: {fileID: 4768273319615491250}
   - component: {fileID: 7293104988796307671}
+  - component: {fileID: 721554479366549839}
   m_Layer: 0
   m_Name: ShieldPowerup
   m_TagString: SpeedPowerUp
@@ -145,3 +146,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   powerupEnum: 2
+--- !u!95 &721554479366549839
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5501576218329232995}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01d9bbee7b5714740a1b059914f79c8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
