@@ -14,7 +14,9 @@ public class PowerupManager : MonoBehaviour
     [SerializeField]
     private int powerupDuration;
     [SerializeField]
-    private float powerupedSpeed;
+    private float powerupedSpeedMult = 3f;
+    [SerializeField]
+    private GameObject shieldPrefab;
 
     private void Start()
     {
@@ -36,14 +38,26 @@ public class PowerupManager : MonoBehaviour
             }
             else if (powerup == PowerupEnum.speed)
             {
-                float oldSpeed = playerComponent.GetSpeed();
-                playerComponent.SetSpeed(powerupedSpeed);
+                playerComponent.speedMult = powerupedSpeedMult;
                 yield return new WaitForSeconds(powerupDuration);
-                playerComponent.SetSpeed(oldSpeed);
+                playerComponent.speedMult = 1f;
             }
-            else if (powerup == PowerupEnum.shield)
+            else if (powerup == PowerupEnum.shield && !playerComponent.sheildActivated)
             {
-                // 
+                GameObject shield;
+                if (playerComponent.sheildActivated)
+                {
+                    shield = player.transform.GetChild(0).gameObject;
+                }
+                else
+                {
+                    playerComponent.sheildActivated = true;
+                    shield = Instantiate(shieldPrefab, player.transform.position, Quaternion.identity);
+                    shield.transform.parent = player.transform;
+                }
+                yield return new WaitForSeconds(powerupDuration * 5);
+                playerComponent.sheildActivated = false;
+                Destroy(shield);
             }
         }
     }

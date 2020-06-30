@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
+    public float speedMult { get; set; } = 1f;
+    public bool sheildActivated { get; set; } = false;
     [SerializeField]
     private int lifeCount = 3;
     [SerializeField]
@@ -27,7 +29,7 @@ public class Player : MonoBehaviour
         float horizInput = Input.GetAxis("Horizontal");
         float verticInput = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizInput, verticInput, 0);
-        transform.Translate(direction * Time.deltaTime * speed);
+        transform.Translate(direction * Time.deltaTime * speed * speedMult);
 
         if (transform.position.y > 6)
         {
@@ -46,16 +48,6 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(10, transform.position.y, 0);
         }
-    }
-
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
     }
 
     public void Damage()

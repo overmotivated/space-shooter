@@ -212,7 +212,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 162793843
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1b4a8fdd39d3a45d0a9ee484ad6800ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -605,7 +605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupDuration: 4
-  powerupedSpeed: 10
+  powerupedSpeedMult: 3
+  shieldPrefab: {fileID: 6401006562145772453, guid: 3e35c0b437f572d448223cc248927897,
+    type: 3}
 --- !u!4 &992051773
 Transform:
   m_ObjectHideFlags: 0

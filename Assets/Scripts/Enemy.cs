@@ -23,7 +23,15 @@ public class Enemy : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             Player player = other.transform.GetComponent<Player>();
-            if (player != null)
+            if (player == null) return;
+
+            if (player.sheildActivated)
+            {
+                player.sheildActivated = false;
+                Destroy(player.transform.GetChild(0).gameObject);
+                Destroy(gameObject);
+            }
+            else
             {
                 player.Damage();
                 Destroy(gameObject);
