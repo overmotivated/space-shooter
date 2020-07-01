@@ -15,25 +15,25 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Player playerComponent = GameObject.Find("Player").GetComponent<Player>();
+
         if (other.CompareTag("Laser"))
         {
             Destroy(other.gameObject);
+            playerComponent.AddScore(10);
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Player"))
+        else if (other.CompareTag("Player") && playerComponent != null)
         {
-            Player player = other.transform.GetComponent<Player>();
-            if (player == null) return;
-
-            if (player.sheildActivated)
+            if (playerComponent.sheildActivated)
             {
-                player.sheildActivated = false;
-                player.transform.GetChild(0).gameObject.SetActive(false);
+                playerComponent.sheildActivated = false;
+                playerComponent.transform.GetChild(0).gameObject.SetActive(false);
                 Destroy(gameObject);
             }
             else
             {
-                player.Damage();
+                playerComponent.Damage();
                 Destroy(gameObject);
             }
         }

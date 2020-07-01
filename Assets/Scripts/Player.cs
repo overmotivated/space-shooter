@@ -60,4 +60,9 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void AddScore( int num )
+    {
+        score += num;
+    }
 }
