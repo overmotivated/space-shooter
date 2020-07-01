@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public bool sheildActivated { get; set; } = false;
     [SerializeField]
     private int lifeCount = 3;
+    public int score { get; private set; }
     [SerializeField]
     private SpawnManager spawnManager;
 
