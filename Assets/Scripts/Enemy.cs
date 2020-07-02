@@ -29,9 +29,9 @@ public class Enemy : MonoBehaviour
         }
         else if (other.CompareTag("Player") && playerComponent != null)
         {
-            if (playerComponent.sheildActivated)
+            if (playerComponent.SheildActivated)
             {
-                playerComponent.sheildActivated = false;
+                playerComponent.SheildActivated = false;
                 playerComponent.transform.GetChild(0).gameObject.SetActive(false);
                 Destroy(gameObject);
             }

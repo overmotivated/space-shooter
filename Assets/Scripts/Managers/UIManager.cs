@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private Text scoreText;
+    [SerializeField]
+    private GameObject gameOver;
     private Player playerComponent;
     private int score = 0;
     private int lives;
@@ -15,27 +17,33 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private List<Sprite> livesImages;
 
-    void Start()
+    private void Start()
     {
         playerComponent = GameObject.Find("Player").GetComponent<Player>();
         scoreText.text = $"Score: {score}";
+        playerComponent.GameOver += ShowGameOver;
     }
 
-    void Update()
+    private void Update()
     {
         UpdateScore();
         UpdateLivesImage();
     }
 
-    void UpdateScore()
+    private void UpdateScore()
     {
         score = playerComponent.Score;
         scoreText.text = $"Score: {score}";
     }
 
-    void UpdateLivesImage()
+    private void UpdateLivesImage()
     {
         lives = playerComponent.LifeCount;
         liveImage.sprite = livesImages[lives];
+    }
+
+    private void ShowGameOver()
+    {
+        gameOver.SetActive(true);
     }
 }

@@ -38,17 +38,17 @@ public class PowerupManager : MonoBehaviour
             }
             else if (powerup == PowerupEnum.speed)
             {
-                playerComponent.speedMult = powerupedSpeedMult;
+                playerComponent.SpeedMult = powerupedSpeedMult;
                 yield return new WaitForSeconds(powerupDuration);
-                playerComponent.speedMult = 1f;
+                playerComponent.SpeedMult = 1f;
             }
-            else if (powerup == PowerupEnum.shield && !playerComponent.sheildActivated)
+            else if (powerup == PowerupEnum.shield && !playerComponent.SheildActivated)
             {
                 var shield = player.transform.GetChild(0).gameObject;
-                playerComponent.sheildActivated = true;
+                playerComponent.SheildActivated = true;
                 shield.SetActive(true);
                 yield return new WaitForSeconds(powerupDuration * 5);
-                playerComponent.sheildActivated = false;
+                playerComponent.SheildActivated = false;
                 shield.SetActive(false);
             }
         }
