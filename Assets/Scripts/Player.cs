@@ -9,9 +9,8 @@ public class Player : MonoBehaviour
     private float speed = 5f;
     public float speedMult { get; set; } = 1f;
     public bool sheildActivated { get; set; } = false;
-    [SerializeField]
-    private int lifeCount = 3;
-    public int score { get; private set; }
+    public int LifeCount { get; private set; } = 3;
+    public int Score { get; private set; } = 0;
     [SerializeField]
     private SpawnManager spawnManager;
 
@@ -53,8 +52,8 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        lifeCount--;
-        if (lifeCount <= 0)
+        LifeCount--;
+        if (LifeCount <= 0)
         {
             spawnManager.OnPlayerDeath();
             Destroy(gameObject);
@@ -63,6 +62,6 @@ public class Player : MonoBehaviour
 
     public void AddScore( int num )
     {
-        score += num;
+        Score += num;
     }
 }

@@ -9,6 +9,11 @@ public class UIManager : MonoBehaviour
     private Text scoreText;
     private Player playerComponent;
     private int score = 0;
+    private int lives;
+    [SerializeField]
+    private Image liveImage;
+    [SerializeField]
+    private List<Sprite> livesImages;
 
     void Start()
     {
@@ -18,7 +23,19 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        score = playerComponent.score;
+        UpdateScore();
+        UpdateLivesImage();
+    }
+
+    void UpdateScore()
+    {
+        score = playerComponent.Score;
         scoreText.text = $"Score: {score}";
+    }
+
+    void UpdateLivesImage()
+    {
+        lives = playerComponent.LifeCount;
+        liveImage.sprite = livesImages[lives];
     }
 }

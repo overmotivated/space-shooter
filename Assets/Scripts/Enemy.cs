@@ -7,6 +7,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
+    Player playerComponent;
+
+    private void Start()
+    {
+        playerComponent = GameObject.Find("Player").GetComponent<Player>();
+    }
 
     void Update()
     {
@@ -15,8 +21,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player playerComponent = GameObject.Find("Player").GetComponent<Player>();
-
         if (other.CompareTag("Laser"))
         {
             Destroy(other.gameObject);
