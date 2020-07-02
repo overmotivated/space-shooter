@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     private Text scoreText;
     [SerializeField]
     private GameObject gameOver;
+    [SerializeField]
+    private GameObject restartText;
     private Player playerComponent;
     private int score = 0;
     private int lives;
@@ -45,6 +47,7 @@ public class UIManager : MonoBehaviour
     private void ShowGameOver()
     {
         gameOver.SetActive(true);
+        restartText.SetActive(true);
         StartCoroutine(GameOverFlickerRoutine());
     }
 
