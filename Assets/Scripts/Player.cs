@@ -57,7 +57,8 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         LifeCount--;
-        if (LifeCount <= 0)
+        LifeCount = Mathf.Max(LifeCount, 0); // check is needed
+        if (LifeCount == 0)
         {
             GameOver?.Invoke();
             spawnManager.OnPlayerDeath();

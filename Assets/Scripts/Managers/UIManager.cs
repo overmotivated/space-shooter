@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     private Image liveImage;
     [SerializeField]
     private List<Sprite> livesImages;
+    public bool ReadyToRestart { get; private set; } = false;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class UIManager : MonoBehaviour
         gameOver.SetActive(true);
         restartText.SetActive(true);
         StartCoroutine(GameOverFlickerRoutine());
+        ReadyToRestart = true;
     }
 
     IEnumerator GameOverFlickerRoutine()
