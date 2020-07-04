@@ -59,9 +59,24 @@ public class Enemy : MonoBehaviour
 
     private void Destroy()
     {
+        float decreaseSpeed = 0.7f;
         animComponent.Play("EnemyExplosion");
         boxColl.enabled = false;
-        speed = 2.5f;
-        Destroy(gameObject, 2.5f);
+        StartCoroutine(speedDecreasing(decreaseSpeed));
+        Destroy(gameObject, 2.8f);
+    }
+
+    IEnumerator speedDecreasing(float decreaseSpeed)
+    {
+        yield return new WaitForSeconds(0.5f);
+        speed = speed * decreaseSpeed;
+        yield return new WaitForSeconds(0.5f);
+        speed = speed * decreaseSpeed;
+        yield return new WaitForSeconds(0.5f);
+        speed = speed * decreaseSpeed;
+        yield return new WaitForSeconds(0.5f);
+        speed = speed * decreaseSpeed;
+        yield return new WaitForSeconds(0.5f);
+        speed = speed * decreaseSpeed;
     }
 }

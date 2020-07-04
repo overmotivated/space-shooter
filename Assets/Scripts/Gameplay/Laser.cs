@@ -21,10 +21,10 @@ public class Laser : MonoBehaviour
             Transform parent = transform.parent;
             if (parent != null)
             {
-                Destroy(parent.gameObject, 2f);
+                Destroy(parent.gameObject, 0.8f);
             }
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 0.8f);
         }
     }
 }
