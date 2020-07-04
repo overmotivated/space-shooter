@@ -7,11 +7,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float speed = 4.5f;
-    Player playerComponent;
+    private Player playerComponent;
+    private Animator animComponent;
+    private BoxCollider2D boxColl;
 
     private void Start()
     {
         playerComponent = GameObject.Find("Player").GetComponent<Player>();
+        animComponent = GetComponent<Animator>();
+        boxColl = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -25,7 +29,9 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
             playerComponent.AddScore(10);
-            Destroy(gameObject);
+            animComponent.Play("EnemyExplosion");
+            boxColl.enabled = false;
+            Destroy(gameObject, 2.3f);
         }
         else if (other.CompareTag("Player") && playerComponent != null)
         {
@@ -33,12 +39,16 @@ public class Enemy : MonoBehaviour
             {
                 playerComponent.SheildActivated = false;
                 playerComponent.transform.GetChild(0).gameObject.SetActive(false);
-                Destroy(gameObject);
+                animComponent.Play("EnemyExplosion");
+                boxColl.enabled = false;
+                Destroy(gameObject, 2.3f);
             }
             else
             {
                 playerComponent.Damage();
-                Destroy(gameObject);
+                animComponent.Play("EnemyExplosion");
+                boxColl.enabled = false;
+                Destroy(gameObject, 2.3f);
             }
         }
     }
