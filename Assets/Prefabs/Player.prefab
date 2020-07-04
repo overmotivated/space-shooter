@@ -115,8 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ad562351896d4389c98afdace7b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  lifeCount: 2
+  speed: 6
   spawnManager: {fileID: 0}
 --- !u!50 &4427352061809613450
 Rigidbody2D:

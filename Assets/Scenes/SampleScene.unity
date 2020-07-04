@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e81cdd552c6968448eeb185b72ffccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnInterval: 3
+  enemySpawnInterval: 2
   powerupSpawnInterval: 5
   enemyContainer: {fileID: 888437804}
   bufsContainer: {fileID: 867761879}

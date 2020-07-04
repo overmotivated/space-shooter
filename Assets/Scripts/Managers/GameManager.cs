@@ -16,13 +16,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private SpawnManager SpawnManager;
     private SpriteRenderer playerSpriteRenderer;
+    private Fire fireComponent;
 
     private void Start()
     {
         mainMenuCanvas.SetActive(true);
         gameUICanvas.SetActive(false);
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        fireComponent = player.GetComponent<Fire>();
         playerSpriteRenderer.enabled = false;
+        fireComponent.enabled = false;
     }
 
     void Update()
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
         gameUICanvas.SetActive(true);
         player.transform.position = new Vector3(0,0,0);
         playerSpriteRenderer.enabled = true;
+        fireComponent.enabled = true;
         SpawnManager.StartSpawn();
     }
 }

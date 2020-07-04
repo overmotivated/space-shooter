@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float speed = 5.5f;
     public float SpeedMult { get; set; } = 1f;
     public bool SheildActivated { get; set; } = false;
     public int LifeCount { get; private set; } = 3;

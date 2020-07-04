@@ -6,7 +6,7 @@ using UnityEngine.Scripting.APIUpdating;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float speed = 4.5f;
     Player playerComponent;
 
     private void Start()
