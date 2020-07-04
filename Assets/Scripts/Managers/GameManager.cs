@@ -5,13 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private Player playerComponent;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private GameObject gameUICanvas;
+    [SerializeField]
+    private GameObject mainMenuCanvas;
+    [SerializeField]
     private UIManager UIManager;
+    [SerializeField]
+    private SpawnManager SpawnManager;
+    private SpriteRenderer playerSpriteRenderer;
 
     private void Start()
     {
-        playerComponent = GameObject.Find("Player").GetComponent<Player>();
-        UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        mainMenuCanvas.SetActive(true);
+        gameUICanvas.SetActive(false);
+        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer.enabled = false;
     }
 
     void Update()
@@ -25,5 +36,14 @@ public class GameManager : MonoBehaviour
     private void RestartGame()
     {
         SceneManager.LoadScene(0);  //Game Scene
+    }
+
+    public void StartNewGame()
+    {
+        mainMenuCanvas.SetActive(false);
+        gameUICanvas.SetActive(true);
+        player.transform.position = new Vector3(0,0,0);
+        playerSpriteRenderer.enabled = true;
+        SpawnManager.StartSpawn();
     }
 }

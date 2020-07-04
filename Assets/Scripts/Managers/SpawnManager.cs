@@ -16,13 +16,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject enemyPrefab;
     [SerializeField]
     private List<GameObject> powerupPrefabs;
-    private bool continueSpawn = true;
+    private bool continueSpawn = false;
 
-    private void Start()
-    {
-        StartCoroutine(DoSpawnEnemy());
-        StartCoroutine(DoSpawnPowerup());
-    }
     void Update()
     {
         
@@ -63,5 +58,12 @@ public class SpawnManager : MonoBehaviour
     public void OnPlayerDeath()
     {
         continueSpawn = false;
+    }
+
+    public void StartSpawn()
+    {
+        continueSpawn = true;
+        StartCoroutine(DoSpawnEnemy());
+        StartCoroutine(DoSpawnPowerup());
     }
 }
