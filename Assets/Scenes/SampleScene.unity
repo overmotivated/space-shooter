@@ -1575,5 +1575,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4427352061809613454, guid: c536a82e6e0be6a499911fa502325085,
+        type: 3}
+      propertyPath: shootCd
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c536a82e6e0be6a499911fa502325085, type: 3}

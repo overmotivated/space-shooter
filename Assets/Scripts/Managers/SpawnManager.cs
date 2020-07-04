@@ -43,7 +43,7 @@ public class SpawnManager : MonoBehaviour
 
     void Spawn(GameObject prefab)
     {
-        GameObject newPrefab = Instantiate(prefab, new Vector3(Random.Range(-9f, 9f), 10, 0), Quaternion.identity);
+        GameObject newPrefab = Instantiate(prefab, new Vector3(Random.Range(-9f, 9f), 14, 0), Quaternion.identity);
         
         if (prefab.transform.CompareTag("Enemy"))
         {

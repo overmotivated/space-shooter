@@ -29,9 +29,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
             playerComponent.AddScore(10);
-            animComponent.Play("EnemyExplosion");
-            boxColl.enabled = false;
-            Destroy(gameObject, 2.3f);
+            Destroy();
         }
         else if (other.CompareTag("Player") && playerComponent != null)
         {
@@ -39,27 +37,31 @@ public class Enemy : MonoBehaviour
             {
                 playerComponent.SheildActivated = false;
                 playerComponent.transform.GetChild(0).gameObject.SetActive(false);
-                animComponent.Play("EnemyExplosion");
-                boxColl.enabled = false;
-                Destroy(gameObject, 2.3f);
+                Destroy();
             }
             else
             {
                 playerComponent.Damage();
-                animComponent.Play("EnemyExplosion");
-                boxColl.enabled = false;
-                Destroy(gameObject, 2.3f);
+                Destroy();
             }
         }
     }
 
-    void Move()
+    private void Move()
     {
         transform.Translate(Vector3.down * Time.deltaTime * speed);
 
         if (transform.position.y < -5f)
         {
-            transform.position= new Vector3(Random.Range(-9f, 9f), 10, 0);
+            transform.position= new Vector3(Random.Range(-9f, 9f), 14, 0);
         }
+    }
+
+    private void Destroy()
+    {
+        animComponent.Play("EnemyExplosion");
+        boxColl.enabled = false;
+        speed = 2.5f;
+        Destroy(gameObject, 2.5f);
     }
 }
