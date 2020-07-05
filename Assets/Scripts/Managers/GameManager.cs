@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private Asteroid asteroidComponent;
     [SerializeField]
     private GameObject gameUICanvas;
     [SerializeField]
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
         fireComponent = player.GetComponent<Fire>();
         playerSpriteRenderer.enabled = false;
         fireComponent.enabled = false;
+        asteroidComponent.AsteroidDestroyed += OnAsteroidDestroyed;
+        Debug.Log("OnAsteroidDestroyed sub");
     }
 
     void Update()
@@ -33,7 +38,13 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && UIManager.ReadyToRestart)
         {
             RestartGame();
-        }
+        }    
+    }
+
+    void OnAsteroidDestroyed()
+    {
+        SpawnManager.StartSpawn();
+        Debug.Log("StartSpawn");
     }
 
     private void RestartGame()
@@ -45,9 +56,9 @@ public class GameManager : MonoBehaviour
     {
         mainMenuCanvas.SetActive(false);
         gameUICanvas.SetActive(true);
+        SpawnManager.SpawnAsteroid();
         player.transform.position = new Vector3(0,0,0);
         playerSpriteRenderer.enabled = true;
         fireComponent.enabled = true;
-        SpawnManager.StartSpawn();
     }
 }

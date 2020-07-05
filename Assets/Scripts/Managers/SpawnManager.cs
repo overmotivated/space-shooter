@@ -15,6 +15,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
+    private GameObject asteroidPrefab;
+    [SerializeField]
     private List<GameObject> powerupPrefabs;
     private bool continueSpawn = false;
 
@@ -65,5 +67,10 @@ public class SpawnManager : MonoBehaviour
         continueSpawn = true;
         StartCoroutine(DoSpawnEnemy());
         StartCoroutine(DoSpawnPowerup());
+    }
+
+    public void SpawnAsteroid()
+    {
+        Instantiate(asteroidPrefab, new Vector3(0, 5, 0), Quaternion.identity);
     }
 }

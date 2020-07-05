@@ -503,6 +503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1047080881}
+  asteroidComponent: {fileID: 160519520258104030, guid: 44a429d2566909d4d926c5a032d56140,
+    type: 3}
   gameUICanvas: {fileID: 1267866584}
   mainMenuCanvas: {fileID: 846554841}
   UIManager: {fileID: 1629703023}
@@ -725,6 +727,8 @@ MonoBehaviour:
   enemyContainer: {fileID: 888437804}
   bufsContainer: {fileID: 867761879}
   enemyPrefab: {fileID: 2614328392034768477, guid: fdb95bdb9810a1b42b552cf4b2b6c1ae,
+    type: 3}
+  asteroidPrefab: {fileID: 160519520258104021, guid: 44a429d2566909d4d926c5a032d56140,
     type: 3}
   powerupPrefabs:
   - {fileID: 1831349156676773170, guid: b4c9c812f086abb45abbe6342094e2da, type: 3}
