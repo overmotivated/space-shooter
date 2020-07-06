@@ -12,11 +12,11 @@ public class PowerupManager : MonoBehaviour
     private Fire fireComponent;
     private Player playerComponent;
     [SerializeField]
+    private GameObject shield;
+    [SerializeField]
     private int powerupDuration;
     [SerializeField]
     private float powerupedSpeedMult = 2f;
-    [SerializeField]
-    private GameObject shieldPrefab;
 
     private void Start()
     {
@@ -44,7 +44,6 @@ public class PowerupManager : MonoBehaviour
             }
             else if (powerup == PowerupEnum.shield && !playerComponent.SheildActivated)
             {
-                var shield = player.transform.GetChild(0).gameObject;
                 playerComponent.SheildActivated = true;
                 shield.SetActive(true);
                 yield return new WaitForSeconds(powerupDuration * 3);
