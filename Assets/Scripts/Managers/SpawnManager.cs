@@ -19,8 +19,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> powerupPrefabs;
     private bool continueSpawn = false;
+    private GameObject asteroid;
 
-    void Update()
+    void Start()
     {
         
     }
@@ -71,6 +72,13 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnAsteroid()
     {
-        Instantiate(asteroidPrefab, new Vector3(0, 5, 0), Quaternion.identity);
+        GameObject asteroid = Instantiate(asteroidPrefab, new Vector3(0, 5, 0), Quaternion.identity);
+        Asteroid asteroidComponent = asteroid.GetComponent<Asteroid>();
+        asteroidComponent.AsteroidDestroyed += OnAsteroidDestroyed;
+    }
+
+    void OnAsteroidDestroyed()
+    {
+        StartSpawn();
     }
 }

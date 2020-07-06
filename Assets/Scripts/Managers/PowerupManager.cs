@@ -14,7 +14,7 @@ public class PowerupManager : MonoBehaviour
     [SerializeField]
     private int powerupDuration;
     [SerializeField]
-    private float powerupedSpeedMult = 3f;
+    private float powerupedSpeedMult = 2f;
     [SerializeField]
     private GameObject shieldPrefab;
 
@@ -47,7 +47,7 @@ public class PowerupManager : MonoBehaviour
                 var shield = player.transform.GetChild(0).gameObject;
                 playerComponent.SheildActivated = true;
                 shield.SetActive(true);
-                yield return new WaitForSeconds(powerupDuration * 5);
+                yield return new WaitForSeconds(powerupDuration * 3);
                 playerComponent.SheildActivated = false;
                 shield.SetActive(false);
             }

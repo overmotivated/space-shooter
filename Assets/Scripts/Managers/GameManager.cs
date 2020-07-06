@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject player;
     [SerializeField]
-    private Asteroid asteroidComponent;
-    [SerializeField]
     private GameObject gameUICanvas;
     [SerializeField]
     private GameObject mainMenuCanvas;
@@ -20,6 +18,7 @@ public class GameManager : MonoBehaviour
     private SpawnManager SpawnManager;
     private SpriteRenderer playerSpriteRenderer;
     private Fire fireComponent;
+    private Asteroid asteroidComponent;
 
     private void Start()
     {
@@ -29,8 +28,6 @@ public class GameManager : MonoBehaviour
         fireComponent = player.GetComponent<Fire>();
         playerSpriteRenderer.enabled = false;
         fireComponent.enabled = false;
-        asteroidComponent.AsteroidDestroyed += OnAsteroidDestroyed;
-        Debug.Log("OnAsteroidDestroyed sub");
     }
 
     void Update()
@@ -39,12 +36,6 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }    
-    }
-
-    void OnAsteroidDestroyed()
-    {
-        SpawnManager.StartSpawn();
-        Debug.Log("StartSpawn");
     }
 
     private void RestartGame()

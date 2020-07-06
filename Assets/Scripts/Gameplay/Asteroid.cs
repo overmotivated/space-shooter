@@ -47,6 +47,7 @@ public class Asteroid : MonoBehaviour
     private void DestroyAsteroid()
     {
         circleColl.enabled = false;
+        Debug.Log("from DestroyAsteroid");
         AsteroidDestroyed?.Invoke();
         Destroy(gameObject);
     }
