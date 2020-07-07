@@ -6,7 +6,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
     [SerializeField]
-    private float rotationSpeed = 0.3f;
+    private float rotationSpeed = 0.1f;
     private CircleCollider2D circleColl;
     [SerializeField]
     private GameObject player;
@@ -47,7 +47,6 @@ public class Asteroid : MonoBehaviour
     private void DestroyAsteroid()
     {
         circleColl.enabled = false;
-        Debug.Log("from DestroyAsteroid");
         AsteroidDestroyed?.Invoke();
         Destroy(gameObject);
     }

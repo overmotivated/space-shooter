@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Explosion1");
         Destroy(gameObject, 2.5f);
+        Debug.Log("Explosion2");
     }
 }
