@@ -52,4 +52,9 @@ public class GameManager : MonoBehaviour
         playerSpriteRenderer.enabled = true;
         fireComponent.enabled = true;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
