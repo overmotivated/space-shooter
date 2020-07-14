@@ -35,7 +35,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && UIManager.ReadyToRestart)
         {
             RestartGame();
-        }    
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //pause
+        }
     }
 
     private void RestartGame()
