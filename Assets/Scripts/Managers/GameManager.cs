@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Fire fireComponent;
     private Asteroid asteroidComponent;
+    private bool isGamePaused = false;
 
     private void Start()
     {
@@ -37,9 +38,17 @@ public class GameManager : MonoBehaviour
             RestartGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && isGamePaused)
         {
-            //pause
+            isGamePaused = false;
+            UIManager.HidePauseUI();
+            Time.timeScale = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.P) && !isGamePaused)
+        {
+            isGamePaused = true;
+            UIManager.ShowPauseUI();
+            Time.timeScale = 0;
         }
     }
 

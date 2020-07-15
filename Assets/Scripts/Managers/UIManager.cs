@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     private GameObject gameOver;
     [SerializeField]
     private GameObject restartText;
+    [SerializeField]
+    private GameObject pauseText;
+    [SerializeField]
+    private GameObject resumeText;
     private Player playerComponent;
     private int score = 0;
     private int lives;
@@ -51,6 +55,18 @@ public class UIManager : MonoBehaviour
         restartText.SetActive(true);
         StartCoroutine(GameOverFlickerRoutine());
         ReadyToRestart = true;
+    }
+
+    public void ShowPauseUI()
+    {
+        pauseText.SetActive(true);
+        resumeText.SetActive(true);
+    }
+
+    public void HidePauseUI()
+    {
+        pauseText.SetActive(false);
+        resumeText.SetActive(false);
     }
 
     IEnumerator GameOverFlickerRoutine()
